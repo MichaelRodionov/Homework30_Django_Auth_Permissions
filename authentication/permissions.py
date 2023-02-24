@@ -9,7 +9,4 @@ class IsUserAdmin(permissions.BasePermission):
     message: str = 'You are not allowed to edit or delete this advertisement'
 
     def has_object_permission(self, request, view, obj) -> bool:
-        """Method to check user's access"""
-        if request.user.role == User.ADMIN:
-            return True
-        return False
+        return request.user.role == User.Roles.ADMIN
